@@ -1,0 +1,67 @@
+<div class="grid-x grid-margin-x">
+  <div class="cell medium-6 large-4">
+    <div class="card" style="width: 100%;">
+      <div class="card-divider">
+        <h4><%= @article.title %></h4>
+      </div>
+      <div class="card-section">
+        <p><%= @article.body %></p>
+        <div class=""><hr>
+          <%= link_to "Edit", edit_article_path(@article), :class => "button tiny" %>
+          <%= link_to "Destroy", article_path(@article), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                      }, :class => "button tiny" %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card" style="width: 100%;">
+      <div class="card-divider">
+        <h4>Add a comment:</h4>
+      </div>
+      <div class="card-section">
+        <%= render 'comments/form' %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="cell medium-6 large-8">
+    <div class="card" style="width: 100%;">
+      <div class="card-divider">
+        <h4>Comments (<%= @article.comments.count %>)</h4>
+      </div>
+      <div class="card-section">
+        <table class="unstriped">
+        <thead>
+          <tr>
+            <th width="200">Commenter</th>
+            <th width="200">Comment</th>
+            <th width="100">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @article.comments.each do |comment| %>
+            <% unless comment.archived? %>
+              <tr>
+                <td><%= comment.commenter %></td>
+                <td><%= comment.body %></td>
+                <td>
+                
+                  <%= link_to "Destroy", [comment.article, comment], data: {
+                                turbo_method: :delete,
+                                turbo_confirm: "Are you sure?"
+                              } %>
+                  
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

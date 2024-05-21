@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="/Users/careybenge/dev/rails/blog/app/assets/stylesheets/foundation.min.css" rel="stylesheet">
+    <%= stylesheet_link_tag 'foundation.min.css' %>
+    <%= javascript_include_tag "foundation.js" %>
+    <%= javascript_include_tag "jquery.js" %>
+    <%= javascript_include_tag "what-input.js" %>
+
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+  
+  </head>
+
+</div>
+
+<div class="top-bar" id="responsive-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Blog</li>
+      <li><a href="#0">One</a></li>
+      <li><a href="#0">Two</a></li>
+      <li><a href="#0">Three</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><input type="search" placeholder="Search"></li>
+      <li><button type="button" class="button">Search</button></li>
+    </ul>
+  </div>
+</div>
+
+  <body>
+  <br>
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x">
+      <div class="cell">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
